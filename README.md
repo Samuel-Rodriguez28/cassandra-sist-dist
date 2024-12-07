@@ -17,7 +17,7 @@ http://cassandra-sist-dist.s3-website-us-east-1.amazonaws.com/
 
 ![image](https://github.com/user-attachments/assets/0b9a8535-3af0-4f31-89c4-4bd75294a7eb)
 
-## Directores, franquicias, etc:
+## Directores, franquicias y peliculas:
 
 ![image](https://github.com/user-attachments/assets/dde7a223-2432-4f02-8d5e-86f3eb46daeb)
 
