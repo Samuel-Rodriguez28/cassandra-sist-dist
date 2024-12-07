@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-franchises-page',
@@ -6,5 +7,11 @@ import { Component } from '@angular/core';
   styleUrl: './franchises-page.component.scss'
 })
 export class FranchisesPageComponent {
+  constructor(
+    private location: Location
+  ){}
 
+  goBack(){
+    this.location.back()
+  }
 }

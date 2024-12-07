@@ -1,1 +1,36 @@
-<p>movies-insert-form works!</p>
+<div *ngIf="loading; else loadedInfo">
+    <p-progressBar mode="indeterminate" [style]="{ height: '6px' }" />
+</div>
+<ng-template #loadedInfo>
+    <div class="flex flex-column gap-2">
+        <label for="username">Nombre</label>
+        <input class="p-fluid" [disabled]="loading" pInputText id="username" aria-describedby="username-help"
+            [(ngModel)]="name" />
+    </div>
+    <div class="flex flex-column gap-2 mt-3">
+        <label for="username">Franquicia</label>
+        <p-dropdown class="p-fluid" [options]="franchises" [(ngModel)]="selectedFranchise" optionLabel="name"
+            placeholder="Selecciona una Franquicia" />
+    </div>
+    <div class="flex flex-column gap-2 mt-3">
+        <label for="username">Sinopsis</label>
+        <textarea class="p-fluid" rows="2" pInputTextarea [autoResize]="true" [(ngModel)]="synopsis">
+        </textarea>
+    </div>
+    <div class="flex flex-column gap-2 mt-3">
+        <label for="username">Director(es)</label>
+        <p-multiSelect class="p-fluid" [options]="directors" [(ngModel)]="selectedDirectors" optionLabel="name" placeholder="Selecciona Directores" />
+    </div>
+    <div class="flex flex-column gap-2 mt-3">
+        <label for="username">Actores</label>
+        <p-multiSelect class="p-fluid" [options]="actors" [(ngModel)]="selectedActors" optionLabel="name" placeholder="Selecciona Actores" />
+    </div>
+    <div class="flex flex-column gap-2 mt-3">
+        <label for="username">Año Lanzamiento</label>
+        <p-inputNumber class="p-fluid" [(ngModel)]="release_date" />
+    </div>
+    <div class="flex justify-content-end mt-2">
+        <p-button label="Aceptar" [loading]="loading" rounded="true" [disabled]="checkDisabled()"
+            (onClick)="insertMovie()" />
+    </div>
+</ng-template>

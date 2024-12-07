@@ -1,1 +1,44 @@
-<p>directors-table works!</p>
+<p-toast />
+<p-confirmDialog />
+<p-table #dt2 [value]="directors" [loading]="loading" [globalFilterFields]="['name', 'last_name']">
+    <ng-template pTemplate="caption">
+        <div class="flex gap-2">
+            <p-button (onClick)="openNewDirectorForm()" rounded="true" label="Agregar" icon="pi pi-plus" />
+            <p-iconField iconPosition="left" class="ml-auto">
+                <p-inputIcon>
+                    <i class="pi pi-search"></i>
+                </p-inputIcon>
+                <input 
+                    pInputText 
+                    type="text" 
+                    (input)="onInput($event)" 
+                    placeholder="Buscar..." />
+            </p-iconField>
+        </div>
+    </ng-template>
+    <ng-template  pTemplate="header">
+        <tr>
+            <th pSortableColumn="name">
+                Nombre <p-sortIcon field="name" />
+            </th>
+            <th pSortableColumn="last_name">
+                Apellido <p-sortIcon field="last_name" />
+            </th>
+            <th>
+                Acciones
+            </th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-director>
+        <tr>
+            <td>{{director.name}}</td>
+            <td>{{director.last_name}}</td>
+            <td>
+                <div class="flex gap-2">
+                    <p-button (onClick)="openUpdateDirectorForm(director.id)" severity="info" icon="pi pi-info-circle" rounded="true" />
+                    <p-button (onClick)="openDirectorDeleteDialog($event, director.id)" severity="danger" icon="pi pi-trash" rounded="true" />
+                </div>
+            </td>
+        </tr>
+    </ng-template>
+</p-table>

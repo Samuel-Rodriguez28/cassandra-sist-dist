@@ -1,1 +1,40 @@
-<p>franchises-table works!</p>
+<p-toast />
+<p-confirmDialog />
+<p-table #dt2 [value]="franchises" [loading]="loading" [globalFilterFields]="['name']">
+    <ng-template pTemplate="caption">
+        <div class="flex gap-2">
+            <p-button (onClick)="openNewFranchiseForm()" rounded="true" label="Agregar" icon="pi pi-plus" />
+            <p-iconField iconPosition="left" class="ml-auto">
+                <p-inputIcon>
+                    <i class="pi pi-search"></i>
+                </p-inputIcon>
+                <input 
+                    pInputText 
+                    type="text" 
+                    (input)="onInput($event)" 
+                    placeholder="Buscar..." />
+            </p-iconField>
+        </div>
+    </ng-template>
+    <ng-template  pTemplate="header">
+        <tr>
+            <th pSortableColumn="name">
+                Nombre <p-sortIcon field="name" />
+            </th>
+            <th>
+                Acciones
+            </th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-franchise>
+        <tr>
+            <td>{{franchise.name}}</td>
+            <td>
+                <div class="flex gap-2">
+                    <p-button (onClick)="openUpdateFranchiseForm(franchise.id)" severity="info" icon="pi pi-info-circle" rounded="true" />
+                    <p-button (onClick)="openFranchiseDeleteDialog($event, franchise.id)" severity="danger" icon="pi pi-trash" rounded="true" />
+                </div>
+            </td>
+        </tr>
+    </ng-template>
+</p-table>

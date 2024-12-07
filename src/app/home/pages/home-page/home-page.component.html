@@ -1,1 +1,32 @@
-<p>home-page works!</p>
+<h1>Practica Sistemas Distribuidos - Apache Cassandra</h1>
+<h3>Base de Datos de Peliculas</h3>
+<div class="grid">
+    <div class="col-6 cursor-pointer" (click)="navigateToPage('actors')">
+        <p-card header="Actores">
+            <div class="text-center">
+                <i class="pi pi-users" style="font-size: 5rem"></i>
+            </div>
+        </p-card>
+    </div>
+    <div class="col-6 cursor-pointer" (click)="navigateToPage('movies')">
+        <p-card header="Peliculas">
+            <div class="text-center">
+                <i class="pi pi-video" style="font-size: 5rem"></i>
+            </div>
+        </p-card>
+    </div>
+    <div class="col-6 cursor-pointer" (click)="navigateToPage('directors')">
+        <p-card header="Directores">
+            <div class="text-center">
+                <i class="pi pi-user-edit" style="font-size: 5rem"></i>
+            </div>
+        </p-card>
+    </div>
+    <div class="col-6 cursor-pointer" (click)="navigateToPage('franchises')">
+        <p-card header="Franquicias">
+            <div class="text-center">
+                <i class="pi pi-book" style="font-size: 5rem"></i>
+            </div>
+        </p-card>
+    </div>
+</div>

@@ -1,1 +1,40 @@
-<p>actor-update-form works!</p>
+<div *ngIf="loading; else loadedInfo">
+    <p-progressBar mode="indeterminate" [style]="{ height: '6px' }" />
+</div>
+<ng-template #loadedInfo>
+    <div *ngIf="!editingName; else nameField" class="flex flex-column">
+        <p class="text-lg font-semibold">Nombre</p>
+        <div class="flex justify-content-between">
+            <p class="text-lg font-medium">{{name}}</p>
+            <p-button (onClick)="editName()" [text]="true" icon="pi pi-pencil" [disabled]="fieldsUnclear" />
+        </div>
+    </div>
+    <ng-template #nameField>
+        <div class="flex flex-column gap-2 p-fluid my-2">
+            <label for="last_name">Nombre</label>
+            <div class="flex">
+                <input class="p-fluid" pInputText id="last_name" [(ngModel)]="name" />
+                <p-button [text]="true" severity="success" icon="pi pi-check" (onClick)="confirmNameChange()" />
+            </div>
+        </div>
+    </ng-template>
+    <div *ngIf="!editingLastName; else lastNameField" class="flex flex-column">
+        <p class="text-lg font-semibold">Apellido</p>
+        <div class="flex justify-content-between">
+            <p class="text-lg font-medium">{{last_name}}</p>
+            <p-button (onClick)="editLastName()" [text]="true" icon="pi pi-pencil" [disabled]="fieldsUnclear" />
+        </div>
+    </div>
+    <ng-template #lastNameField>
+        <div class="flex flex-column gap-2 p-fluid my-2">
+            <label for="last_name">Apellido</label>
+            <div class="flex">
+                <input class="p-fluid" pInputText id="last_name" [(ngModel)]="last_name" />
+                <p-button [text]="true" severity="success" icon="pi pi-check" (onClick)="confirmLastNameChange()" />
+            </div>
+        </div>
+    </ng-template>
+    <div class="flex justify-content-end">
+        <p-button label="Aceptar" rounded="true" [disabled]="fieldsUnclear" (onClick)="updateActor()"/>
+    </div>
+</ng-template>

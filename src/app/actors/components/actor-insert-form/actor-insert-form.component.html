@@ -1,1 +1,23 @@
-<p>actor-insert-form works!</p>
+<div class="flex flex-column gap-2">
+    <label for="username">Nombre</label>
+    <input 
+        class="p-fluid"
+        [disabled]="loading"
+        pInputText 
+        id="username" 
+        aria-describedby="username-help" 
+        [(ngModel)]="name" />
+</div>
+<div class="flex flex-column gap-2 my-4">
+    <label for="username">Apellido</label>
+    <input 
+        class="p-fluid"
+        [disabled]="loading"
+        pInputText 
+        id="username" 
+        aria-describedby="username-help" 
+        [(ngModel)]="last_name" />
+</div>
+<div class="flex justify-content-end">
+    <p-button label="Aceptar" [loading]="loading" rounded="true" [disabled]="checkDisabled()" (onClick)="insertActor()"/>
+</div>
